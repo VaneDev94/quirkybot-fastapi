@@ -1,4 +1,0 @@
-
-CLIENT_ID = "19c03f4b-bc7e-403c-9634-56149b5ed95a"
-
-CLIENT_SECRET = "5bac7dfe-ce7f-4e99-8fb6-d61bb0cc1a67"

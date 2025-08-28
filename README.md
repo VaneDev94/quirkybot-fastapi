@@ -1,91 +1,64 @@
 
 
-# QuirkyBotDev (Versión Portfolio)
 
-Este proyecto es una versión adaptada del bot real de atención al cliente desarrollado para la tienda online (todavia no integrado) [quirkyartbylara.com](https://quirkyartbylara.com). Ha sido limpiado de datos sensibles para poder mostrarlo en mi portfolio como ejemplo real de integración de un bot IA con una tienda online.
+# 🧠 Bot IA Base
 
-## 🧠 ¿Qué hace este bot?
+Este proyecto es un esqueleto funcional de un bot con inteligencia artificial, ideal para integrarlo con APIs externas, usar Function Calling con OpenAI y responder a usuarios por consola o desde otros canales.
 
-Este bot es capaz de:
-- Conectarse con la API de OpenAI para interpretar y responder preguntas de forma inteligente.
-- Obtener productos desde la tienda usando scraping con Selenium.
-- Consultar y modificar pedidos mediante la API de Wix.
-- Cancelar pedidos, cambiar dirección o email, y generar enlaces de pago.
-- Guardar historial de conversaciones.
-- Ejecutar acciones reales según la intención del usuario (function calling).
-- Leer automáticamente el catálogo de productos y categorías de la tienda.
+## ✅ Características incluidas
 
-## ⚙️ Tecnologías usadas
+- API lista para recibir mensajes con FastAPI.
+- Lógica de conexión con OpenAI.
+- Soporte para function calling.
+- Estructuras de entrada/salida (`schemas.py`).
+- Sistema de handlers para definir las acciones que ejecuta el bot.
+- Variables de entorno simuladas para configurar el entorno.
+- Archivo de pruebas para probar el bot desde consola.
 
-- **Python**
-- **FastAPI**
-- **Selenium**
-- **PostgreSQL**
-- **OpenAI API**
-- **Wix API (Backoffice y Storefront)**
-
-## 📁 Estructura del proyecto
+## 📁 Estructura
 
 ```
-bot_lara/         ← Lógica principal del bot
-scripts/          ← Scripts de utilidad y scraping
-tests/            ← Pruebas automáticas (opcional)
-.env.example      ← Variables de entorno de ejemplo
-README.md         ← Este archivo
+bot_ia_base/
+├── main.py                  # Punto de entrada, lanza el servidor
+├── config.py                # Carga las variables del entorno
+├── .env.example             # Variables necesarias (sin claves reales)
+├── requirements.txt         # Dependencias del proyecto
+├── README.md                # Este archivo
+│
+├── schemas/
+│   └── chat.py              # Schemas para las peticiones y respuestas del bot
+│
+├── services/
+│   └── openai.py            # Conexión con la API de OpenAI
+│
+├── functions/
+│   └── handlers.py          # Funciones que el bot puede ejecutar
+│
+└── tests/
+    └── test_bot.py          # Script para probar el bot desde consola
 ```
 
-## 🧪 Variables de entorno necesarias
+## 🛠️ ¿Cómo usarlo?
 
-Renombra el archivo `.env.example` como `.env` y rellena tus propios datos:
-
-```
-OPENAI_API_KEY=tu_clave_openai
-WIX_CLIENT_ID=tu_cliente_id
-WIX_CLIENT_SECRET=tu_cliente_secret
-REDIRECT_URI=http://localhost:3000/callback
-BOT_NAME=QuirkyBot
-
-DB_NAME=bot_lara
-DB_USER=usuario
-DB_PASSWORD=tu_contraseña
-DB_HOST=localhost
-DB_PORT=5432
-```
-
-## ⚠️ Aviso
-
-Este proyecto no contiene datos reales, tokens ni claves válidas. Está adaptado para mostrar su funcionamiento sin comprometer la privacidad ni la seguridad del proyecto original.
-
----
-
-## 🚀 ¿Cómo ejecutarlo en local?
-
-1. **Clona el repositorio** y entra en la carpeta:
-   ```bash
-   git clone https://github.com/vanessamontero/QuirkyBotDev_GitHub.git
-   cd QuirkyBotDev_GitHub
-   ```
-
-2. **Crea y activa un entorno virtual (opcional pero recomendado):**
-   ```bash
-   python -m venv env
-   source env/bin/activate  # En Mac/Linux
-   env\Scripts\activate     # En Windows
-   ```
-
-3. **Instala las dependencias:**
+1. Clona este repositorio.
+2. Crea tu archivo `.env` a partir de `.env.example` y añade tus claves reales.
+3. Instala las dependencias:
    ```bash
    pip install -r requirements.txt
    ```
-
-4. **Crea tu archivo `.env` a partir del `.env.example` y pon tus claves.**
-
-5. **Ejecuta el bot (ejemplo para FastAPI o script):**
+4. Ejecuta el bot:
    ```bash
-   uvicorn bot_lara.main:app --reload
+   uvicorn main:app --reload
    ```
+5. Usa `test_bot.py` para enviarle mensajes desde consola.
 
-   O si tienes un script específico para lanzar:
-   ```bash
-   python bot_lara/main.py
-   ```
+## 💬 ¿Para qué sirve?
+
+Este bot base puede:
+- Conectarse a servicios como OpenAI, Stripe, etc.
+- Usar función calling para responder automáticamente según lo que diga el usuario.
+- Ser integrado fácilmente en webs, WhatsApp, Discord, o usarlo solo desde terminal.
+
+---
+
+🎯 Ideal para vender como servicio base, integrar en tiendas online, automatizar tareas o montar un asistente virtual propio.
