@@ -3,12 +3,17 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://vanedev94.github.io/frontend-demobot",
+  "homepage": "https://vanedev94.github.io/frontend-demobot/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:check": "tsc -b && vite build --mode development",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "deploy:verbose": "gh-pages -d dist --verbose",
+    "clean": "rm -rf dist .tsc-cache node_modules/.vite",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^18.3.1",
